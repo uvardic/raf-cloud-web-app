@@ -8,20 +8,20 @@
                 <form class="form">
                     <div class="form-group">
                         <label for="username">Username*</label>
-                        <input [(ngModel)]="registerUserRequest.username" name="username" id="username" type="email" class="form-control" required>
+                        <input [(ngModel)]="registerRequest.username" name="username" id="username" type="email" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Password*</label>
-                        <input [(ngModel)]="registerUserRequest.password" name="password" id="password" type="password" class="form-control" required>
+                        <input [(ngModel)]="registerRequest.password" name="password" id="password" type="password" class="form-control" required>
                     </div>
                     <div class="form-row">
                         <div class="form-group col">
                             <label for="firstName">First name</label>
-                            <input [(ngModel)]="registerUserRequest.firstName" name="firstName" id="firstName" type="text" class="form-control">
+                            <input [(ngModel)]="registerRequest.firstName" name="firstName" id="firstName" type="text" class="form-control">
                         </div>
                         <div class="form-group col">
                             <label for="lastName">Last name</label>
-                            <input [(ngModel)]="registerUserRequest.lastName" name="lastName" id="lastName" type="text" class="form-control">
+                            <input [(ngModel)]="registerRequest.lastName" name="lastName" id="lastName" type="text" class="form-control">
                         </div>
                     </div>
                     <button (click)="registerUser()" type="submit" class="btn btn-primary float-right">Register</button>

@@ -6,9 +6,16 @@ import {HttpClient} from '@angular/common/http';
 })
 export class UserService {
 
+    private serverURL = 'http://localhost:9000/cloud/user';
+
     constructor(private http: HttpClient) { }
 
-    registerUser(registerUserRequest) {
-        return this.http.post<any>('http://localhost:9000/cloud/user/save', registerUserRequest);
+    register(registerRequest) {
+        return this.http.post<any>(`${this.serverURL}/save`, registerRequest);
     }
+
+    login(loginRequest) {
+        return this.http.post<any>(`${this.serverURL}/login`, loginRequest);
+    }
+
 }

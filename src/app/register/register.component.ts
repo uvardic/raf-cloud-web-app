@@ -8,7 +8,7 @@ import {UserService} from '../service/user.service';
 })
 export class RegisterComponent {
 
-    registerUserRequest = {
+    registerRequest = {
         username: '',
         password: '',
         firstName: '',
@@ -19,7 +19,7 @@ export class RegisterComponent {
     constructor(private userService: UserService) {}
 
     registerUser() {
-        this.userService.registerUser(this.registerUserRequest)
+        this.userService.register(this.registerRequest)
             .subscribe(
                 response => console.log(response),
                 error => console.log(error)
