@@ -18,4 +18,8 @@ export class UserService {
         return this.http.post<any>(`${this.serverURL}/login`, loginRequest);
     }
 
+    loggedIn() {
+        return !!localStorage.getItem('token');
+    }
+
 }

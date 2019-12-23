@@ -11,6 +11,7 @@ import {LoginComponent} from './login/login.component';
 import {MachinesComponent} from './machines/machines.component';
 import {MenuComponent} from './menu/menu.component';
 import {UserService} from './service/user.service';
+import {AuthGuard} from './guard/auth.guard';
 
 @NgModule({
     declarations: [
@@ -27,7 +28,7 @@ import {UserService} from './service/user.service';
         FormsModule,
         HttpClientModule
     ],
-    providers: [UserService],
+    providers: [UserService, AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

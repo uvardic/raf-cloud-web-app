@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {UserService} from '../service/user.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -11,17 +12,28 @@ export class RegisterComponent {
     registerRequest = {
         username: '',
         password: '',
-        firstName: '',
-        lastName: '',
+        firstName: null,
+        lastName: null,
         role: 'USER'
     };
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService, private router: Router) {}
 
     registerUser() {
+        if (this.registerRequest.firstName === '') {
+            this.registerRequest.firstName = null;
+        }
+
+        if (this.registerRequest.lastName === '') {
+            this.registerRequest.lastName = null;
+        }
+
         this.userService.register(this.registerRequest)
             .subscribe(
-                response => console.log(response),
+                response => {
+                    console.log(response);
+                    this.router.navigate(['/login']);
+                },
                 error => console.log(error)
             );
     }
