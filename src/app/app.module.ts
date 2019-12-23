@@ -10,6 +10,7 @@ import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {MachinesComponent} from './machines/machines.component';
 import {MenuComponent} from './menu/menu.component';
+import {UserService} from './service/user.service';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,7 @@ import {MenuComponent} from './menu/menu.component';
         FormsModule,
         HttpClientModule
     ],
-    providers: [],
+    providers: [UserService],
     bootstrap: [AppComponent]
 })
 export class AppModule {}
