@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {AlertModule} from 'ngx-bootstrap';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {AppComponent} from './app.components';
 import {AppRouterModule} from './app-router.module';
@@ -12,6 +12,7 @@ import {MachinesComponent} from './machines/machines.component';
 import {MenuComponent} from './menu/menu.component';
 import {UserService} from './service/user.service';
 import {AuthGuard} from './guard/auth.guard';
+import {TokenInterceptorService} from './service/token-interceptor.service';
 
 @NgModule({
     declarations: [
@@ -26,9 +27,9 @@ import {AuthGuard} from './guard/auth.guard';
         BrowserModule,
         AppRouterModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
     ],
-    providers: [UserService, AuthGuard],
+    providers: [UserService, AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MachineService} from '../service/machine.service';
 
 @Component({
   selector: 'app-machines',
@@ -7,9 +8,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class MachinesComponent implements OnInit {
 
-  constructor() { }
+    constructor(private machineService: MachineService) {}
 
-  ngOnInit() {
-  }
+    ngOnInit(): void {
+        this.machineService.save({name: 'Masina sa fronta'})
+            .subscribe(
+                response => console.log(response),
+                error => console.error(error.error.message)
+            );
+    }
+
+
 
 }
