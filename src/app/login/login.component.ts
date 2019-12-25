@@ -23,7 +23,7 @@ export class LoginComponent {
                     localStorage.setItem('token', response.token);
                     this.router.navigate(['/machines']);
                 },
-                error => console.log(error)
+                error => console.error(error.error.message)
             );
     }
 

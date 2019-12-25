@@ -1,1 +1,51 @@
-<p>machines works!</p>
+<form class="form-inline md-form mr-auto mb-4 pt-5">
+    <input [(ngModel)]="searchContent" name="searchContent" class="form-control mr-sm-3" type="text" placeholder="Search" autocomplete="off" aria-label="Search">
+    <button (click)="search()" class="btn btn-primary" type="submit">Search</button>
+</form>
+<form class="form-inline md-form mr-auto mb-4">
+    <input [(ngModel)]="machineCreateRequest.name" name="name" class="form-control mr-sm-3" type="text" placeholder="Machine name" autocomplete="off" aria-label="Machine name">
+    <button (click)="create()" class="btn btn-primary" type="submit">Create machine</button>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">UUID</th>
+            <th scope="col">Name</th>
+            <th scope="col">DateFrom</th>
+            <th scope="col">DateTo</th>
+            <th scope="col">Status</th>
+            <th scope="col">Active</th>
+            <th scope="col">Start</th>
+            <th scope="col">Stop</th>
+            <th scope="col">Restart</th>
+            <th scope="col">Destroy</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let machine of machines">
+            <td>{{machine.id}}</td>
+            <td>{{machine.uuid}}</td>
+            <td>{{machine.name}}</td>
+            <td>{{machine.dateFrom}}</td>
+            <td *ngIf="machine.dateTo; else notDefined">{{machine.dateTo}}</td>
+            <ng-template #notDefined>
+                <td>Not defined</td>
+            </ng-template>
+            <td>{{machine.status}}</td>
+            <td>{{machine.active}}</td>
+            <td>
+                <button (click)="start(machine.id)" [disabled]="!machine.active" class="btn btn-primary">Start</button>
+            </td>
+            <td>
+                <button (click)="stop(machine.id)" [disabled]="!machine.active" class="btn btn-primary">Stop</button>
+            </td>
+            <td>
+                <button (click)="restart(machine.id)" [disabled]="!machine.active" class="btn btn-primary">Restart</button>
+            </td>
+            <td>
+                <button (click)="destroy(machine.id)" [disabled]="!machine.active" class="btn btn-primary">Destroy</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

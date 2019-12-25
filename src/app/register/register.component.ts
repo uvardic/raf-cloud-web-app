@@ -34,7 +34,7 @@ export class RegisterComponent {
                     console.log(response);
                     this.router.navigate(['/login']);
                 },
-                error => console.log(error)
+                error => console.error(error.error.message)
             );
     }
 
